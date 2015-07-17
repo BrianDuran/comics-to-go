@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Comics info</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @comic.name %>
+</p>
+
+<p>
+  <strong>Release date:</strong>
+  <%= @comic.release_date %>
+</p>
+
+<p>
+  <strong>Condition:</strong>
+  <%= @comic.condition %>
+</p>
+
+<p>
+  <strong>Hero:</strong>
+  <%= @comic.character_id %>
+</p>
+
+<%= link_to 'Edit Comic', edit_comic_path(@comic), class: 'btn btn-default' %>
+<%= link_to 'Back to Comics', comics_path, class: 'btn btn-default' %>
