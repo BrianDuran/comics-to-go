@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Figure info</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @figure.name %>
+</p>
+
+<p>
+  <strong>Release date:</strong>
+  <%= @figure.release_date %>
+</p>
+
+
+<%= link_to 'Edit Comic', edit_figure_path(@figure), class: 'btn btn-default' %>
+<%= link_to 'Back to Comics', figure_path, class: 'btn btn-default' %>
