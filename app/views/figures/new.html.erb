@@ -1,0 +1,8 @@
+<% if @no_figures %>
+  <%= render 'no_figures_message' %>
+<% end %>
+<h1>New Figure</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', figures_path, class: 'btn btn-default' %>

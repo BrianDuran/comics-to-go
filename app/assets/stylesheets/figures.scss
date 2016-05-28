@@ -1,0 +1,16 @@
+// Place all the styles related to the figures controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.release-date-field {
+  select {
+    width: 80px;
+    display: inline-block;
+  }
+}
+
+.alert.alert-info {
+  font-size: 15px;
+  line-height: 1.5;
+  background-image: none;
+  border-color: #bce8f1;
+}

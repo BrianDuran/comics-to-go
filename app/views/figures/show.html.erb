@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Characted:</strong>
+  <%= @figure.character_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @figure.name %>
+</p>
+
+<p>
+  <strong>Release date:</strong>
+  <%= @figure.release_date %>
+</p>
+
+<%= link_to 'Edit', edit_figure_path(@figure) %> |
+<%= link_to 'Back', figures_path %>
