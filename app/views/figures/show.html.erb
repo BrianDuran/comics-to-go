@@ -1,19 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="show-figure">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 figure-info">
+        <div class="row">
+          <div class="col-md-4">
+            <span>Character</span>
+          </div>
+          <div class="col-md-8 info">
+            <span><%= Character.find(@figure.character_id).name %></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <span>Name</span>
+          </div>
+          <div class="col-md-8 info">
+            <span><%= @figure.name %></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <span>Release date</span>
+          </div>
+          <div class="col-md-8 info">
+            <span><%= @figure.release_date %></span>
+          </div>
+        </div>
 
-<p>
-  <strong>Characted:</strong>
-  <%= @figure.character_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @figure.name %>
-</p>
-
-<p>
-  <strong>Release date:</strong>
-  <%= @figure.release_date %>
-</p>
-
-<%= link_to 'Edit', edit_figure_path(@figure) %> |
-<%= link_to 'Back', figures_path %>
+        <%= link_to 'Edit', edit_figure_path(@figure) %> |
+        <%= link_to 'Back', figures_path %>
+      </div>
+      <div class="col-md-4">
+        <div class="image">
+          <span> Future image </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

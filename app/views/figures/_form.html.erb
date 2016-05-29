@@ -10,12 +10,8 @@
       </ul>
     </div>
   <% end %>
-  <%= @characters.each do |character| %>
-    <% puts character%>
-  <% end %>
-  <div class="form-group">
-    <%= f.label :character_id %><br>
-    <%= f.text_field :character_id, class:'form-control'%>
+  <div class="form-group character-selection">
+    <%= f.collection_select :character_id, Character.all, :id, :name, {}, {class: 'form-control'}%>
   </div>
   <div class="form-group">
     <%= f.label :name %><br>

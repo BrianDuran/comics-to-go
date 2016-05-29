@@ -1,6 +1,9 @@
 // Place all the styles related to the figures controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
 .release-date-field {
   select {
     width: 80px;
@@ -13,4 +16,78 @@
   line-height: 1.5;
   background-image: none;
   border-color: #bce8f1;
+}
+
+.character-selection select {
+  width: auto;
+}
+
+.flat-table {
+  margin-top: 30px;
+  font-family: sans-serif;
+  font-size: 115%;
+
+  th {
+    background-color: #50A6C2;
+    color: white;
+    font-weight: normal;
+    padding: 20px 30px;
+    text-align: center;
+  }
+
+  td {
+    background-color: rgb(238, 238, 238);
+    color: #6f6f6f;
+    padding: 20px 30px;
+    text-align: center;
+  }
+
+  a {
+    color: #50A6C2;
+  }
+
+  a:hover {
+   background-color: none;
+  }
+
+  a:visited {
+    color: #50A6C2;
+    text-decoration: none;
+  }
+
+  .destroy a {
+    color: #ff7f7f;
+    font-weight: bold;
+  }
+}
+
+.show-figure {
+  margin-top: 30px;
+
+  span {
+    font-family: sans-serif;
+    font-size: 30px;
+
+  }
+
+  .figure-info {
+    .row {
+      padding: 20px 0px
+    }
+  }
+
+  .info span {
+    font-size: 20px;
+  }
+
+  .image {
+    height: 500px;
+    background: #6f6f6f;
+
+    span {
+      top: 250px;
+      right: 100px;
+      position: absolute;
+    }
+  }
 }
