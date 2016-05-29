@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
   resources :figures
-
-  root 'comics#index'
   resources :comics
   resources :characters
 end

@@ -1,0 +1,44 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.welcome-wrapper {
+  position: relative;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+
+  .row {
+    margin-top: 100px;
+  }
+
+  #banner {
+    background-image: image-url("marvel-vs-dc-mixed-cut.jpg"); //'app/assets/images/marvel.jpg';
+    background-position: center center;
+    background-size: cover;
+    color: #ffffff;
+    padding: 14em 0em 14em;
+    text-align: center;
+  }
+
+  div.section {
+    background: red;
+    height: 400px;
+    padding: 0;
+    width: 32%;
+    display: inline-block;
+
+    &.margin-right {
+      margin-right: 15px;
+    }
+  }
+
+  h2 {
+    font-family: 'Raleway, Helvetica, sans-serif';
+    line-height: 1.5em;
+    color: #474747;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 60px;
+    font-size: 45px;
+  }
+}
