@@ -5,7 +5,7 @@ class FiguresController < ApplicationController
   # GET /figures
   # GET /figures.json
   def index
-    @figures = Figure.all
+    @figures = Figure.search(params[:search]).order('release_date ASC')
     if @figures.blank?
       no_figures_found
       render :new
@@ -34,7 +34,8 @@ class FiguresController < ApplicationController
 
     respond_to do |format|
       if @figure.save
-        format.html { redirect_to @figure, notice: 'Figure was successfully created.' }
+        no_figures_found
+        format.html { redirect_to action: "index", notice: 'Figure was successfully created.' }
         format.json { render :show, status: :created, location: @figure }
       else
         format.html { render :new }
