@@ -33,6 +33,7 @@
     font-weight: normal;
     padding: 20px 30px;
     text-align: center;
+    position: relative !important;
   }
 
   td {
@@ -89,5 +90,21 @@
       right: 100px;
       position: absolute;
     }
+  }
+}
+
+#sorting-icons-container {
+  padding-left: 10px;
+  display: inline;
+
+  .sorting-up {
+    position: absolute;
+    top: 16px;
+  }
+
+  .sorting-down {
+    position: absolute;
+    top: 30px;
+    right: 95px;
   }
 }
