@@ -1,5 +1,6 @@
 class FiguresController < ApplicationController
   before_action :set_figure, only: [:show, :edit, :update, :destroy]
+  $figure_headers = ['Character', 'Name', 'Release date']
   @no_figures = false
 
   # GET /figures
