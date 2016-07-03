@@ -1,12 +1,13 @@
 class FiguresController < ApplicationController
   before_action :set_figure, only: [:show, :edit, :update, :destroy]
-  $figure_headers = ['Character', 'Name', 'Release date']
+  $figure_headers = ['character', 'name', 'release_date']
   @no_figures = false
 
   # GET /figures
   # GET /figures.json
   def index
-    @figures = Figure.search(params[:search]).order('release_date ASC')
+    # sleep 2
+    @figures = Figure.search(params[:search]).order("#{params[:sort]}" + " #{params[:direction]}")
     if @figures.blank?
       no_figures_found
       render :new
