@@ -1,0 +1,14 @@
+<% @figures.each do |figure| %>
+  <tr class="row">
+    <td class="col-md-3"><%= figure.character.name %></span></td>
+    <td class="col-md-3"><%= figure.name %></td>
+    <td class="col-md-3"><%= figure.release_date %></td>
+    <td class="col-md-3">
+      <div class="row">
+        <span class="col-md-4"><%= link_to 'Show', figure %></span>
+        <span class="col-md-4"><%= link_to 'Edit', edit_figure_path(figure) %></span>
+        <span class="col-md-4 destroy"><%= link_to 'Destroy', figure, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+      </div>
+    </td>
+  </tr>
+<% end %>

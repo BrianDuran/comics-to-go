@@ -5,10 +5,7 @@ class Figure < ActiveRecord::Base
   validates_presence_of :character_id
 
   def self.search(search)
-    if search && search == 'character'
-      puts 'ENTRE'
-      Figures.joins(:charater).order('character.name desc')
-    elsif search
+    if search
       where('name LIKE ?', "%#{search}%")
     else
       all

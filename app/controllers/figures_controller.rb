@@ -7,7 +7,7 @@ class FiguresController < ApplicationController
   # GET /figures.json
   def index
     # sleep 2
-    @figures = Figure.search(params[:search]).order("#{params[:sort]}" + " #{params[:direction]}")
+    @figures = Figure.all
     if @figures.blank?
       no_figures_found
       render :new
@@ -67,6 +67,18 @@ class FiguresController < ApplicationController
     respond_to do |format|
       format.html { redirect_to figures_url, notice: 'Figure was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def sorted_table
+    @figures = Figure.all.order("#{params[:column]}" + " #{params[:direction]}")
+    puts '-------------------------------------'
+    @figures.each do |figure|
+      puts figure.name
+    end
+    puts '-------------------------------------'
+    respond_to do |format|
+      format.js
     end
   end
 

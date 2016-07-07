@@ -1,8 +1,7 @@
 module FiguresHelper
   def sortable(column)
     title = column.titleize
-    column = 'character' ? 'name' : column
-    direction = column == params[:sort] && params[:direction] == 'asc' ? 'desc' : 'asc'
-    link_to title, sort: column, direction: direction
+    direction = column == params[:column] && params[:direction] == 'asc' ? 'desc' : 'asc'
+    link_to title, sorted_table_path(column: column, direction: direction), remote: true
   end
 end
