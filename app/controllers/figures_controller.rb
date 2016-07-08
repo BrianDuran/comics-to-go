@@ -71,6 +71,7 @@ class FiguresController < ApplicationController
   end
 
   def sorted_table
+    # figures.joins(:character).order(‘character.name ASC’)
     @figures = Figure.all.order("#{params[:column]}" + " #{params[:direction]}")
     puts '-------------------------------------'
     @figures.each do |figure|
