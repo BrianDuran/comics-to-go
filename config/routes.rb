@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :figures
   resources :comics
   resources :characters
-  get '/sorted_table', to: 'figures#sorted_table', as: 'sorted_table' #sort usar verbos para las acciones del controlador
+  get '/sorted_table', to: 'figures#sort', as: 'sorted_table' #sort usar verbos para las acciones del controlador
 end

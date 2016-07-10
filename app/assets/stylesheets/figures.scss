@@ -29,11 +29,15 @@
 
   th {
     background-color: #50A6C2;
-    color: white;
-    font-weight: normal;
     padding: 20px 30px;
     text-align: center;
     position: relative !important;
+    a {
+      color: white;
+    }
+    a:hover {
+      color: none;
+    }
   }
 
   td {

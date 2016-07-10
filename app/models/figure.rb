@@ -11,4 +11,16 @@ class Figure < ActiveRecord::Base
       all
     end
   end
+
+  def self.sort(column, direction)
+    if column == 'character'
+        @figures = Figure.includes(:character).order("character.name" + " #{direction}")
+        puts '-------------------------'
+        @figures.each do |figure|
+          puts figure
+        end
+        puts '-------------------------'
+    end
+    all.order("#{column}" + " #{direction}")
+  end
 end
