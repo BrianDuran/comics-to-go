@@ -5,22 +5,11 @@ class Figure < ActiveRecord::Base
   validates_presence_of :character_id
 
   def self.search(search)
-    if search
-      where('name LIKE ?', "%#{search}%")
-    else
-      all
-    end
+    search ? where('name LIKE ?', "%#{search}%") : all
   end
 
   def self.sort(column, direction)
-    if column == 'character'
-        @figures = Figure.includes(:character).order("character.name" + " #{direction}")
-        puts '-------------------------'
-        @figures.each do |figure|
-          puts figure
-        end
-        puts '-------------------------'
-    end
-    all.order("#{column}" + " #{direction}")
+    return  all.order("#{column} #{direction}") unless column == 'character'
+    Figure.includes(:character).order("characters.name #{direction}")
   end
 end

@@ -12,12 +12,10 @@
 <table class="flat-table container">
   <thead>
     <tr class="row">
-      <% $figure_headers.each_with_index do |header, index| %>
-        <th class="col-md-3"><%=sortable header %>
-          <!-- <div id="sorting-icons-container">
-            <span id='arrow-up-<%= index %>' class="sorting-up glyphicon glyphicon-chevron-up"></span>
-            <span class="sorting-down glyphicon glyphicon-chevron-down">
-          </div> -->
+      <% $figure_headers.each do |header| %>
+        <th class="col-md-3"><%= sortable header %>
+          <div class="sorting-icons-container">
+          </div>
         </th>
       <% end %>
       <th class="col-md-3"></th>

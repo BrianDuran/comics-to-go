@@ -1,11 +1,18 @@
 $(document).on('page:change', function() {
-  $('span.sorting-up').on('click', function() {
-    $('span.sorting-down').removeClass('glyphicon glyphicon-chevron-down');
-    $('span.sorting-up').addClass('active');
-  });
-
-  $('span.sorting-up.active').on('click', function() {
-    $('span.sorting-down').addClass('glyphicon glyphicon-chevron-down');
-    $('span.sorting-up').removeClass('active');
+  $('th a').click(function(header) {
+    removeArrows();
+    let direction = $(this).attr('href').split('=')[2]
+    if (direction == 'asc') {
+      $(this).attr('href', $(this).attr('href').replace('asc', 'desc'));
+      $(this).parent().children('div').addClass('glyphicon glyphicon-chevron-down');
+    } else {
+      $(this).attr('href', $(this).attr('href').replace('desc', 'asc'));
+      $(this).parent().children('div').addClass('glyphicon glyphicon-chevron-up');
+    }
   });
 });
+
+function removeArrows () {
+  $('.sorting-icons-container').removeClass('glyphicon glyphicon-chevron-down');
+  $('.sorting-icons-container').removeClass('glyphicon glyphicon-chevron-up');
+}
