@@ -7,7 +7,7 @@ class FiguresController < ApplicationController
   # GET /figures.json
   def index
     # sleep 2
-    @figures = Figure.all
+    @figures = Figure.search(params[:search])
     if @figures.blank?
       no_figures_found
       render :new
@@ -17,6 +17,7 @@ class FiguresController < ApplicationController
   # GET /figures/1
   # GET /figures/1.json
   def show
+    # rescue_from ActiveRecord::RecordNotFound, with: render_404
   end
 
   # GET /figures/new
@@ -79,6 +80,10 @@ class FiguresController < ApplicationController
   end
 
   private
+    def render_404
+      render :index
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_figure
       @figure = Figure.find(params[:id])
