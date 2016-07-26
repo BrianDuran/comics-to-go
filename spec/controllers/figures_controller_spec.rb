@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe FiguresController, type: :controller do
-  # before(:context) do
-    let!(:figures) { FactoryGirl.create_list(:figure, 3)}
-  # end
+  before(:all) do
+    @figures = FactoryGirl.create_list(:figure, 3)
+  end
 
   context 'with valid attributes' do
       describe 'GET #index' do
@@ -14,7 +14,7 @@ RSpec.describe FiguresController, type: :controller do
 
         it 'return all figures' do
           get :index
-          expect(assigns(:figures)).to eq(figures)
+          expect(assigns(:figures)).to eq(@figures)
         end
 
         it 'returns the figures that match the specified search value' do
@@ -26,13 +26,13 @@ RSpec.describe FiguresController, type: :controller do
 
       describe 'GET #show' do
         it 'respond with a 200 status code' do
-          get :show, id: figures.first
+          get :show, id: @figures.first
           expect(response.status).to eq(200)
         end
 
         it 'shows a figure' do
-          get :show, id: figures.first
-          expect(assigns(:figure)).to eq(figures.first)
+          get :show, id: @figures.first
+          expect(assigns(:figure)).to eq(@figures.first)
         end
       end
 
@@ -48,26 +48,38 @@ RSpec.describe FiguresController, type: :controller do
         end
 
         it 'creates a figure' do
-          expect(post :create, figure: attributes_for(:figure)).to change{Figure.length}.by(1)
+          expect {post :create, figure: attributes_for(:figure)}.to change(Figure, :count).by(1)
         end
       end
-    #
-    #   describe 'PUT #update' do
-    #     it 'update a figure' do
-    #       put :update, id: figures.first, figure: { name: 'Spiderman', release_date: '2016/05/05', character_id: 1 }
-    #       figures.first.reload
-    #       expect(figures.first.name).to eq('Spiderman')
-    #     end
-    #   end
-    #
-    # describe 'DELETE method' do
-    #   it 'destroy a figure' do
-    #     expect {delete :destroy, id: figures.first}.to change(Figure, :count).by(-1)
-    #   end
-    # end
+
+      describe 'PUT #update' do
+        # 302: URL redirection.
+        it 'respond with a 302 status code' do
+          put :update, id: @figures.first, figure: { name: 'Spiderman', release_date: '2016/05/05', character_id: 1 }
+          expect(response.status).to eq(302)
+        end
+
+        it 'update a figure' do
+          put :update, id: @figures.first, figure: { name: 'Spiderman', release_date: '2016/05/05', character_id: 1 }
+          @figures.first.reload
+          expect(@figures.first.name).to eq('Spiderman')
+        end
+      end
+
+    describe 'DELETE method' do
+      it 'respond with a 302 status code' do
+        delete :destroy, id: @figures.first
+        expect(response.status).to eq(302)
+      end
+
+      it 'destroy a figure' do
+        expect {delete :destroy, id: @figures.first}.to change(Figure, :count).by(-1)
+      end
+    end
 
   end
 
+  # COMO MANEJAR UN 404
   # context 'with invalid attributes' do
   #   describe 'GET #show with no existence id' do
   #     # it 'return a 404 code on the response' do
