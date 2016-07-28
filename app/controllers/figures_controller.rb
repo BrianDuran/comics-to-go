@@ -82,7 +82,7 @@ class FiguresController < ApplicationController
     def set_figure
       @figure = Figure.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      render file: "#{Rails.root}/public/404.html",  status: 404
+      render file: "#{Rails.root}/public/404.html",  status: :not_found, layout:true
     end
 
     def figure_params

@@ -39,12 +39,10 @@ RSpec.describe FiguresController, type: :controller do
     end
 
     context 'with invalid id' do
-      # ERROR: expecting <"/home/brian/Documents/comics-to-go/public/404.html"> but rendering with <["layouts/application"]>
-      # WITHOUT LAYOUT: gets []
-      # it "render template for 404 status code" do
-      #   get :show, id: 'non_existent_id'
-      #   expect(response).to render_template("#{Rails.root}/public/404.html")
-      # end
+      it "render template for 404 status code" do
+        get :show, id: 'non_existent_id'
+        expect(response).to render_template(file: "#{Rails.root}/public/404.html")
+      end
 
       it 'respond with a 404 status code' do
         get :show, id: 'non_existent_id'
