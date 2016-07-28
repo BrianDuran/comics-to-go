@@ -17,7 +17,6 @@ class FiguresController < ApplicationController
   # GET /figures/1
   # GET /figures/1.json
   def show
-    # rescue_from ActiveRecord::RecordNotFound, with: render_404
   end
 
   # GET /figures/new
@@ -80,16 +79,12 @@ class FiguresController < ApplicationController
   end
 
   private
-    def render_404
-      render :index
-    end
-
-    # Use callbacks to share common setup or constraints between actions.
     def set_figure
       @figure = Figure.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render file: "#{Rails.root}/public/404.html",  status: 404
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def figure_params
       params.require(:figure).permit(:character_id, :name, :release_date)
     end
