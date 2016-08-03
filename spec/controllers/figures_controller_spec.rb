@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe FiguresController, type: :controller do
-  before(:all) do
-    @figures = FactoryGirl.create_list(:figure, 3)
-  end
-
   describe 'GET #index' do
-    context 'with valid attributes' do
+    context 'with figures created' do
+      before(:each) do
+        @figures = FactoryGirl.create_list(:figure, 3)
+      end
+
       it 'respond with a 200 status code' do
         get :index
         expect(response.status).to eq(200)
@@ -23,10 +23,22 @@ RSpec.describe FiguresController, type: :controller do
         expect(assigns(:figures).first).to eq (spiderman)
       end
     end
+
+    context 'with no figures created' do
+      it 'renders new figure template' do
+        get :index
+        expect(response).to render_template("layouts/application")
+        expect(response).to render_template("figures/new")
+      end
+    end
   end
 
   describe 'GET #show' do
-    context 'with valid attributes' do
+    context 'with valid id' do
+      before(:each) do
+        @figures = FactoryGirl.create_list(:figure, 3)
+      end
+
       it 'respond with a 200 status code' do
         get :show, id: @figures.first
         expect(response.status).to eq(200)
@@ -46,6 +58,44 @@ RSpec.describe FiguresController, type: :controller do
 
       it 'respond with a 404 status code' do
         get :show, id: 'non_existent_id'
+        expect(response.code).to eq("404")
+      end
+    end
+  end
+
+  describe 'GET #new' do
+    it 'respond with a 200 status code' do
+      get :new
+      expect(response.status).to eq(200)
+    end
+
+    it 'renders new figure template' do
+      get :index
+      expect(response).to render_template("layouts/application")
+      expect(response).to render_template("figures/new")
+    end
+  end
+
+  describe 'GET #edit' do
+    context 'with valid id' do
+      before(:each) do
+        @figures = FactoryGirl.create_list(:figure, 1)
+      end
+
+      it 'finds the figure' do
+        get :edit, id: @figures.first
+        expect(assigns(:figure)).to eq(@figures.first)
+      end
+    end
+
+    context 'with invalid id' do
+      it "render template for 404 status code" do
+        get :edit, id: 'non_existent_id'
+        expect(response).to render_template(file: "#{Rails.root}/public/404.html")
+      end
+
+      it 'respond with a 404 status code' do
+        get :edit, id: 'non_existent_id'
         expect(response.code).to eq("404")
       end
     end
@@ -71,6 +121,10 @@ RSpec.describe FiguresController, type: :controller do
 
   describe 'PUT #update' do
     context 'with valid attributes' do
+      before(:each) do
+        @figures = FactoryGirl.create_list(:figure, 3)
+      end
+
     # 302: URL redirection.
       it 'respond with a 302 status code' do
         put :update, id: @figures.first, figure: { name: 'Spiderman', release_date: '2016/05/05', character_id: 1 }
@@ -87,6 +141,10 @@ RSpec.describe FiguresController, type: :controller do
 
   describe 'DELETE method' do
     context 'with valid attributes' do
+      before(:each) do
+        @figures = FactoryGirl.create_list(:figure, 3)
+      end
+
       it 'respond with a 302 status code' do
         delete :destroy, id: @figures.first
         expect(response.status).to eq(302)
