@@ -27,7 +27,7 @@ RSpec.describe FiguresController, type: :controller do
     context 'with no figures created' do
       it 'renders new figure template' do
         get :index
-        expect(response).to render_template("layouts/application")
+        # expect(response).to render_template("layouts/application") no es recomendado tener varios expects en un test
         expect(response).to render_template("figures/new")
       end
     end
