@@ -5,7 +5,7 @@ class Metric
   end
 
   def get_values
-    "Values: #{ @values.join("-")}"
+    "Values: #{@values.join("-")}"
   end
 
 #Calculates the average value
